@@ -1,0 +1,35 @@
+
+> backend@1.0.0 test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js tests/products.test.js --runInBand
+
+(node:38736) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/products.test.js
+  create
+    √ creates with images, price in rupees, generated file names on disk (48 ms)
+    √ 401 without token, 403 for a customer (8 ms)
+    √ field validation returns details (11 ms)
+    √ rejects missing, fake, svg, oversized and too many images; nothing is left on disk (35 ms)
+    √ duplicate name (case-insensitive) is 409 and its files are cleaned up (13 ms)
+  update and archive
+    √ partial update of fields (17 ms)
+    √ JSON body works without files; empty update is 400; customer is 403 (24 ms)
+    √ add and remove images together, removed file leaves disk (22 ms)
+    √ image count must stay between 1 and 5; unknown ids rejected (26 ms)
+    √ renaming onto an existing name is 409 and cleans up new files (15 ms)
+    √ archive hides the product, admin can still see it, name becomes reusable (79 ms)
+  listing
+    √ search covers name and description (5 ms)
+    √ category is case-insensitive and filters combine (14 ms)
+    √ price bounds are inclusive and decimals work (5 ms)
+    √ sorting, with ties broken by _id (20 ms)
+    √ pagination covers every item exactly once, meta is correct (25 ms)
+    √ invalid query values are 400 (12 ms)
+    √ invalid ObjectIds are 400 not 500 (11 ms)
+    √ every response carries X-Request-Id (11 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        3.517 s
+Ran all test suites matching tests/products.test.js.

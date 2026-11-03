@@ -1,0 +1,21 @@
+
+> backend@1.0.0 test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js tests/auth.test.js --runInBand
+
+(node:33636) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+PASS tests/auth.test.js
+  √ register creates a customer and ignores a supplied role (228 ms)
+  √ duplicate email is rejected with 409 (189 ms)
+  √ invalid input is rejected with 400 (3 ms)
+  √ login succeeds, wrong password and unknown email both 401 (572 ms)
+  √ /me requires a valid token (208 ms)
+  √ authorize(ROLES.ADMIN) blocks customers with 403 and lets admins through (19 ms)
+  √ expired token is rejected with 401 at the route (7 ms)
+  √ valid token for a deleted user is rejected with 401 (200 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        4.346 s
+Ran all test suites matching tests/auth.test.js.

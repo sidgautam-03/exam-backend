@@ -9,7 +9,9 @@
     "start": "node src/server.js",
     "worker": "node src/worker.js",
     "seed": "node src/seed.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand",
+    "e2e": "node e2e/parallel-orders.mjs",
+    "e2e:postman": "npx --yes newman run e2e/product-order.postman_collection.json -e e2e/Local.postman_environment.json --working-dir e2e"
   },
   "keywords": [],
   "author": "",
