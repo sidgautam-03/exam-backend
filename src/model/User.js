@@ -28,12 +28,21 @@ const userSchema = new mongoose.Schema(
       enum: Object.values(ROLES),
       default: ROLES.CUSTOMER,
     },
+    isActive: { type: Boolean, default: true }, // false = disabled by an admin: cannot log in, sessions revoked
+    emailVerified: { type: Boolean, default: false },
+    emailVerifiedAt: Date,
+    failedLoginAttempts: { type: Number, default: 0, select: false },
+    lockUntil: { type: Date, select: false }, // account lockout after repeated failed logins
   },
   {
     timestamps: true,
     toJSON: {
       transform(doc, ret) {
+        ret.id = String(ret._id);
+        delete ret._id;
         delete ret.passwordHash; // response me kabhi nahi
+        delete ret.failedLoginAttempts;
+        delete ret.lockUntil;
         delete ret.__v;
         return ret;
       },
