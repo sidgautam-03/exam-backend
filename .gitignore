@@ -8,4 +8,4 @@ logs/*
 !logs/.gitkeep
 coverage/
 dist/
-.DS_Store
+.DS_Store*-out.txt
